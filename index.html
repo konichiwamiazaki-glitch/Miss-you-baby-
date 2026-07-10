@@ -16,56 +16,60 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             overflow: hidden;
             text-align: center;
         }
         .container {
             background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
             border: 4px solid #fff;
-            max-width: 90%;
-            width: 480px;
+            max-width: 95%;
+            width: 550px;
             animation: bounceIn 1.5s ease;
             z-index: 10;
             position: relative;
+            transition: all 0.5s ease;
         }
         h1 {
             color: #ff5e97;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             text-shadow: 2px 2px #fff;
-            animation: wobbleText 2s infinite ease-in-out alternate;
         }
         .message-box {
             color: #5c527f;
-            font-size: 1.15rem;
-            line-height: 2;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: bold;
+            font-size: 1.4rem; /* Text size bada kar diya */
+            line-height: 2.2;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         
-        /* Tedhe-medhe bubbly line animations */
-        .bubbly-line {
-            display: inline-block;
-            animation: floatWave 3s infinite ease-in-out;
+        /* Hawa me tairte hue lines (in order) */
+        .floating-line {
+            display: block;
+            animation: floatUpDown 4s infinite ease-in-out;
+            font-weight: bold;
         }
-        .bubbly-line:nth-child(odd) {
-            animation-delay: 0.5s;
-        }
-        .bubbly-line:nth-child(even) {
-            animation-delay: 1s;
-        }
+        /* Alag-alag delay taaki natural wave effect lage */
+        .floating-line:nth-child(1) { animation-delay: 0s; }
+        .floating-line:nth-child(2) { animation-delay: 0.4s; }
+        .floating-line:nth-child(3) { animation-delay: 0.8s; }
+        .floating-line:nth-child(4) { animation-delay: 1.2s; }
+        .floating-line:nth-child(5) { animation-delay: 1.6s; }
+        .floating-line:nth-child(6) { animation-delay: 2s; }
+        .floating-line:nth-child(7) { animation-delay: 2.4s; }
 
         .heart-btn {
             background: linear-gradient(45deg, #ff6b8b, #ff8eaf);
             color: white;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.2rem;
+            padding: 15px 40px;
+            font-size: 1.3rem;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
@@ -74,15 +78,24 @@
             border: 2px solid #fff;
         }
         .heart-btn:hover {
-            transform: scale(1.1) rotate(-3deg);
-            background: linear-gradient(45deg, #ff8eaf, #ff6b8b);
+            transform: scale(1.1);
         }
 
-        /* Floating background items */
+        /* Final Secret Message Style */
+        .secret-message {
+            display: none;
+            font-size: 2.8rem; /* Bada aur bold final message */
+            color: #ff3366;
+            text-shadow: 3px 3px #fff;
+            font-weight: bold;
+            animation: popOpen 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Background floating elements */
         .floating-item {
             position: absolute;
             bottom: -10%;
-            animation: floatUpAnimation 5s linear infinite;
+            animation: floatUpAnimation 4s linear infinite;
             opacity: 0;
             pointer-events: none;
             z-index: 1;
@@ -90,83 +103,93 @@
 
         @keyframes bounceIn {
             0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
+            50% { transform: scale(1.02); }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        @keyframes wobbleText {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); } /* Smooth up-down motion */
         }
 
-        @keyframes floatWave {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
+        @keyframes popOpen {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         @keyframes floatUpAnimation {
             0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-120vh) rotate(360deg) scale(1.5); opacity: 0; }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.9; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.8); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>I Miss You Baby 💗✨</h1>
-        
-        <div class="message-box">
-            <span class="bubbly-line">Jaldi aa jaiye online aapke bina dil nhi lagta 🥴🥴</span><br>
-            <span class="bubbly-line">Aaj bhot pyaar aa rha h aap pe 🥺😾😾</span><br>
-            <span class="bubbly-line">Ye recharge ki maakichoot🥺</span><br>
-            <span class="bubbly-line">🥰🥰🥰🥰</span><br>
-            <span class="bubbly-line">Aur me zombie banne ke aur 1 kadam aage chala gaya 🥺🥺🧟🧟</span><br>
-            <span class="bubbly-line">Plsss goli mat maariyega</span><br>
-            <span class="bubbly-line">Aur abhi aap aaiyega to mujhe aate hi aapke kissie chaiye agar aapne nhi diya sachme me gussa ho jaaunga 😾😾🥰</span>
+    <div class="container" id="mainContainer">
+        <div id="contentBeforeClick">
+            <h1>I Miss You Baby 💗✨</h1>
+            
+            <div class="message-box">
+                <span class="floating-line">Jaldi aa jaiye online aapke bina dil nhi lagta 🥴🥴</span>
+                <span class="floating-line">Aaj bhot pyaar aa rha h aap pe 🥺😾😾</span>
+                <span class="floating-line">Ye recharge ki maakichoot🥺</span>
+                <span class="floating-line">🥰🥰🥰🥰</span>
+                <span class="floating-line">Aur me zombie banne ke aur 1 kadam aage chala gaya 🥺🥺🧟🧟</span>
+                <span class="floating-line">Plsss goli mat maariyega</span>
+                <span class="floating-line">Aur abhi aap aaiyega to mujhe aate hi aapke kissie chaiye agar aapne nhi diya sachme me gussa ho jaaunga 😾😾🥰</span>
+            </div>
+
+            <button class="heart-btn" onclick="triggerSurprise()">Click for a Surprise! 🎉</button>
         </div>
 
-        <button class="heart-btn" onclick="triggerSurprise()">Click for a Surprise! 🎉</button>
+        <!-- Ye click karne ke baad dikhega -->
+        <div id="contentAfterClick" class="secret-message">
+            Love uh so much baby 💗💗✨
+        </div>
     </div>
 
     <script>
-        // Background me dheere-dheere chalne wale normal hearts
+        // Slow background hearts
         function spawnBackgroundHeart() {
             const heart = document.createElement('div');
             heart.classList.add('floating-item');
-            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💗';
+            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💖';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 4 + 's';
             heart.style.fontSize = Math.random() * 15 + 15 + 'px';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 7000);
         }
-        setInterval(spawnBackgroundHeart, 600);
+        setInterval(spawnBackgroundHeart, 700);
 
-        // Button click karne par jordaar explosion function
+        // Surprise Button Logic
         function triggerSurprise() {
-            const items = ['😘', '💋', '❤️', '💖', '🥰', '🧸'];
+            // Purana content chhupao aur naya bada message dikhao
+            document.getElementById('contentBeforeClick').style.display = 'none';
+            document.getElementById('contentAfterClick').style.display = 'block';
             
-            // 40 items ek saath screen par blast honge alag-alag jagah se
-            for (let i = 0; i < 40; i++) {
+            // Container ka size dhang se adjust karne ke liye
+            document.getElementById('mainContainer').style.padding = '60px 20px';
+
+            const items = ['😘', '💋', '❤️', '💖', '🥰', '✨'];
+            
+            // 50 Emojis ka heavy explosion effect
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const element = document.createElement('div');
                     element.classList.add('floating-item');
                     element.innerHTML = items[Math.floor(Math.random() * items.length)];
                     
-                    // Poori screen me randomly kahi se bhi shuru ho sakte hain
                     element.style.left = Math.random() * 100 + 'vw';
                     element.style.bottom = '0%';
-                    
-                    // Blast effect ke liye inki speed fast hogi
-                    element.style.animationDuration = Math.random() * 1.5 + 1.5 + 's';
-                    element.style.fontSize = Math.random() * 30 + 25 + 'px'; // Bada size
+                    element.style.animationDuration = Math.random() * 1.5 + 1 + 's'; // Fast blast
+                    element.style.fontSize = Math.random() * 30 + 30 + 'px'; // Kafi bada size
                     
                     document.body.appendChild(element);
-                    setTimeout(() => element.remove(), 3000);
-                }, i * 50);
+                    setTimeout(() => element.remove(), 2500);
+                }, i * 40);
             }
         }
     </script>
