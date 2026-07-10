@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 90%;
+            width: 460px;
+            animation: fadeIn 2s ease-in-out;
+            z-index: 10;
+        }
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .message-box {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: left;
+            padding: 10px;
+        }
+        .heart-btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+        .heart-btn:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: floatUp 4s linear infinite;
+            opacity: 0;
+            bottom: -10%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>I Miss You Baby 💗✨</h1>
+        
+        <div class="message-box">
+            Jaldi aa jaiye online aapke bina dil nhi lagta 🥴🥴<br>
+            Aaj bhot pyaar aa rha h aap pe 🥺😾😾<br>
+            Ye recharge ki maakichoot🥺<br>
+            🥰🥰🥰🥰<br>
+            Aur me zombie banne ke aur 1 kadam aage chala gaya 🥺🥺🧟🧟<br>
+            Plsss goli mat maariyega<br>
+            Aur abhi aap aaiyega to mujhe aate hi aapke kissie chaiye agar aapne nhi diya sachme me gussa ho jaaunga 😾😾🥰
+        </div>
+
+        <button class="heart-btn" onclick="sendLove()">Click for a Surprise!</button>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Auto background hearts
+        setInterval(createHeart, 500);
+
+        // Surprise click function
+        function sendLove() {
+            for(let i=0; i<20; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+            alert("A pocketful of love and hugs sent your way! Now come back online soon! 🤗✨");
+        }
+    </script>
+</body>
+</html>
